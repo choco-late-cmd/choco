@@ -2,6 +2,16 @@ provider "aws" {
   region = "eu-north-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "tf-state-choco381"
+    key            = "dev/terraform.tfstate"
+    region         = "eu-north-1"
+    dynamodb_table = "terraform-lock" 
+    encrypt        = true
+  }
+}
+
 # VPC
 module "vpc" {
   source               = "../../modules/vpc"
