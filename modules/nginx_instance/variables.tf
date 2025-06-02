@@ -27,3 +27,15 @@ variable "key_name" {
   description = "SSH key pair name"
   type        = string
 }
+
+variable "iam_instance_profile" {
+  description = "IAM instance profile to attach to the instance"
+  type        = string
+  default     = null
+}
+
+variable "user_data" {
+  description = "User data script"
+  type        = string
+  default     = null
+}
