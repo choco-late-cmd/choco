@@ -23,6 +23,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
+      - name: Write db_password to terraform.tfvars
+        run: |
+          echo 'db_password = "${{ secrets.DB_PASSWORD }}"' > environments/dev/terraform.tfvars
+
       - name: Terraform Init
         run: terraform init
         working-directory: environments/dev
